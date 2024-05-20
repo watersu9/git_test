@@ -1,9 +1,15 @@
 import * as React from "react";
-import { ScrollView, Text, StyleSheet, View } from "react-native";
+import { useState } from "react";
+import { ScrollView, Text, StyleSheet, View, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { Color, Border, FontSize, FontFamily } from "./GlobalStyles";
 
 const Screen1 = () => {
+  const [nickname, setNickname] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+
   return (
     <ScrollView
       style={styles.scrollview}
@@ -14,12 +20,35 @@ const Screen1 = () => {
 몇가지 개인정보들을
 작성해주세요`}</Text>
       <Text style={styles.text1}>닉네임</Text>
-      <View style={[styles.child, styles.itemLayout]} />
-      <View style={[styles.item, styles.itemLayout]} />
-      <View style={[styles.inner, styles.innerPosition]} />
-      <View style={[styles.rectangleView, styles.itemLayout]} />
+      <TextInput
+        style={[styles.textInput, styles.itemLayout,{top : 259}]}
+        onChangeText={setNickname}
+        value={nickname}
+        placeholder="닉네임을 입력해 주세요"
+      />
       <Text style={[styles.text2, styles.textPosition]}>전화번호</Text>
+      <TextInput
+        style={[styles.textInput, styles.itemLayout, { top: 433 }]}
+        onChangeText={setPhoneNumber}
+        value={phoneNumber}
+        placeholder="전화번호를 입력해 주세요"
+        keyboardType="phone-pad"
+      />
       <Text style={[styles.text3, styles.textPosition]}>이메일</Text>
+      <TextInput
+        style={[styles.textInput, styles.itemLayout, { top: 521 }]}
+        onChangeText={setEmail}
+        value={email}
+        placeholder="이메일을 입력해 주세요"
+        keyboardType="email-address"
+      />
+      <Text style={styles.text11}>생년월일</Text>
+      <TextInput
+        style={[styles.textInput, styles.itemLayout, { top: 343 }]}
+        onChangeText={setBirthdate}
+        value={birthdate}
+        placeholder="생년월일을 입력해 주세요"
+      />
       <Text style={[styles.text4, styles.text4Typo]}>
         아래 내용에 모두 동의합니다.
       </Text>
@@ -27,38 +56,14 @@ const Screen1 = () => {
       <View style={[styles.child2, styles.childBorder]} />
       <Text style={[styles.text5, styles.textTypo3]}>남은 시간 3:00</Text>
       <Text style={[styles.text6, styles.textTypo3]}>인증 받기</Text>
-      <Text style={[styles.text7, styles.textTypo2]}>
-        *휴대폰 번호를 입력해 주세요.
-      </Text>
-      <Text style={[styles.text8, styles.textTypo1]}>
-        *이메일 주소를 입력해 주세요.
-      </Text>
-      <Text style={[styles.text9, styles.textTypo2]}>
-        *생년월일을 입력해 주세요.
-      </Text>
-      <Text style={[styles.text10, styles.textTypo1]}>
-        *닉네임을 입력해 주세요.
-      </Text>
+      
       <View style={[styles.child3, styles.childBorder]} />
       <Image
         style={[styles.polygonIcon, styles.navercomPosition]}
         contentFit="cover"
-        source={require("./assets/polygon-1.png")}
+        source={require("./assets/polygon.png")}
       />
       <Text style={[styles.navercom, styles.navercomPosition]}>naver.com</Text>
-      <Text style={styles.text11}>생년월일</Text>
-      <View style={[styles.child4, styles.innerBorder]} />
-      <View style={[styles.child5, styles.childLayout1]} />
-      <View style={[styles.child6, styles.childLayout1]} />
-      <Text style={[styles.text12, styles.textTypo]}>
-        개인정보 이용약관 동의
-      </Text>
-      <Text style={[styles.text13, styles.textTypo]}>
-        마케팅 정보 수신 동의
-      </Text>
-      <View style={[styles.child7, styles.childLayout]} />
-      <View style={[styles.child8, styles.childLayout]} />
-      <View style={[styles.child9, styles.childLayout]} />
     </ScrollView>
   );
 };
@@ -74,10 +79,12 @@ const styles = StyleSheet.create({
     left: 17,
     position: "absolute",
     backgroundColor: Color.colorWhite,
+    paddingHorizontal: 10,
   },
-  innerPosition: {
-    top: 521,
-    height: 42,
+  textInput: {
+    fontSize: FontSize.size_lg,
+    fontFamily: FontFamily.interRegular,
+    color: Color.colorBlack,
   },
   textPosition: {
     height: 26,
@@ -136,48 +143,6 @@ const styles = StyleSheet.create({
     top: 533,
     position: "absolute",
   },
-  innerBorder: {
-    width: 329,
-    borderRadius: Border.br_3xs,
-    left: 17,
-    borderWidth: 1,
-    borderColor: Color.primary,
-    borderStyle: "solid",
-    position: "absolute",
-    backgroundColor: Color.colorWhite,
-  },
-  childLayout1: {
-    height: 52,
-    width: 294,
-    left: 35,
-    borderWidth: 1,
-    borderColor: Color.primary,
-    borderStyle: "solid",
-    borderRadius: Border.br_3xs,
-    position: "absolute",
-    backgroundColor: Color.colorWhite,
-  },
-  textTypo: {
-    width: 120,
-    left: 35,
-    fontSize: FontSize.size_xs,
-    height: 24,
-    fontFamily: FontFamily.interMedium,
-    fontWeight: "500",
-    textAlign: "left",
-    color: Color.colorBlack,
-    position: "absolute",
-  },
-  childLayout: {
-    height: 12,
-    width: 12,
-    left: 317,
-    borderWidth: 1,
-    borderColor: Color.primary,
-    borderStyle: "solid",
-    position: "absolute",
-    backgroundColor: Color.colorWhite,
-  },
   text: {
     top: 60,
     left: 22,
@@ -201,25 +166,6 @@ const styles = StyleSheet.create({
     textAlign: "left",
     color: Color.colorBlack,
     position: "absolute",
-  },
-  child: {
-    top: 433,
-  },
-  item: {
-    top: 258,
-  },
-  inner: {
-    width: 329,
-    borderRadius: Border.br_3xs,
-    left: 17,
-    borderWidth: 1,
-    borderColor: Color.primary,
-    borderStyle: "solid",
-    position: "absolute",
-    backgroundColor: Color.colorWhite,
-  },
-  rectangleView: {
-    top: 343,
   },
   text2: {
     top: 400,
@@ -326,31 +272,6 @@ const styles = StyleSheet.create({
     color: Color.colorBlack,
     position: "absolute",
   },
-  child4: {
-    top: 607,
-    height: 166,
-  },
-  child5: {
-    top: 632,
-  },
-  child6: {
-    top: 712,
-  },
-  text12: {
-    top: 615,
-  },
-  text13: {
-    top: 692,
-  },
-  child7: {
-    top: 585,
-  },
-  child8: {
-    top: 615,
-  },
-  child9: {
-    top: 692,
-  },
   scrollview: {
     width: 360,
     overflow: "hidden",
@@ -361,4 +282,6 @@ const styles = StyleSheet.create({
 });
 
 export default Screen1;
+
+
 

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   textTypo: {
     fontFamily: FontFamily.interRegular,
     fontSize: FontSize.size_6xl,
-    textAlign: "left",
+    textAlign: "center",
     color: Color.colorBlack,
     left: "50%",
     position: "absolute",
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.interExtraBold,
     width: 325,
     height: 151,
-    textAlign: "left",
+    textAlign: "center",
     color: Color.colorBlack,
     left: "50%",
     position: "absolute",

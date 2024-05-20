@@ -1,9 +1,13 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { useState } from "react";
+import { StyleSheet, View, Text, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { Color, Border, FontFamily, FontSize } from "./GlobalStyles";
 
 const Frame2 = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View style={styles.view}>
       <View style={[styles.child, styles.childBorder]} />
@@ -18,24 +22,35 @@ const Frame2 = () => {
       </Text>
       <View style={[styles.child1, styles.childBorder]} />
       <View style={[styles.child2, styles.childBorder]} />
-      <Text style={[styles.email, styles.emailTypo]}>Email</Text>
-      <Text style={[styles.email, styles.emailTypo]}>Email</Text>
-      <Text style={[styles.password, styles.emailTypo]}>Password</Text>
+      <TextInput
+        style={[styles.emailInput, styles.input]}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+      />
+      <TextInput
+        style={[styles.passwordInput, styles.input]}
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
       <Text style={styles.logIn}>Log In</Text>
       <Image
         style={styles.ellipseIcon}
         contentFit="cover"
-        source={require("./assets/icon.png")}
+        source={require("./assets/Eclipse_1.png")}
       />
       <Image
         style={styles.child3}
         contentFit="cover"
-        source={require("./assets/icon.png")}
+        source={require("./assets/Eclipse_2.png")}
       />
       <Image
         style={styles.child4}
         contentFit="cover"
-        source={require("./assets/icon.png")}
+        source={require("./assets/Eclipse_3.png")}
       />
       <Text style={[styles.signInWith2, styles.signTypo]}>
         Sign in with Naver

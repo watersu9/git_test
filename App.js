@@ -22,25 +22,30 @@ const App = () => {
   if (!fontsLoaded && !error) {
     return null;
   }*/
-
+//stack에 페이지 쌓아두어야 제대로 이동함(버튼눌렀을때)
   return (
     <>
       <NavigationContainer>
         {hideSplashScreen ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
-              name="Frame"
-              component={Frame}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
               name="Frame1"
               component={Frame1}
               options={{ headerShown: false }}
             />
             <Stack.Screen
+              name="Frame"
+              component={Frame}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
               name="Frame2"
               component={Frame2}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Screen1"
+              component={Screen1}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   text: {
-    marginLeft: -105,
+    marginLeft: -150,
     top: 260,
     left: "50%",
     fontSize: 48,
